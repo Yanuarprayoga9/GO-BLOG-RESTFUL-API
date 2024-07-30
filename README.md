@@ -20,13 +20,4 @@
 6. Gorilla Mux (For HTTP routing and URL matcher)
 
 ## SCHEMA
-+------------+       +-------------+
-|   User     |       |    Post     |
-+------------+       +-------------+
-| ID         |<----- | AuthorID    |
-| Nickname   |       | ID          |
-| Email      |       | Title       |
-| Password   |       | Content     |
-| CreatedAt  |       | CreatedAt   |
-| UpdatedAt  |       | UpdatedAt   |
-+------------+       +-------------+
+![alt text](docs/image.png)
