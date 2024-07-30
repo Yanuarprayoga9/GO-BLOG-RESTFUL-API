@@ -1,5 +1,5 @@
 # BLOG API GO EXAMPLE
-creatinng blog api using go lang
+- creating blog api using go lang
 ## FEATURE 
 1. Signup (Register)
 2. Edit his account
@@ -10,3 +10,23 @@ creatinng blog api using go lang
 7. View a particular blog post
 8. View other blog posts published by other users
 9. Delete blog post created by him
+
+## This API will be built with:
+1. Go
+2. GORM (A Golang ORM)
+3. JWT
+4. Postgres
+5. Mysql
+6. Gorilla Mux (For HTTP routing and URL matcher)
+
+## SCHEMA
++------------+       +-------------+
+|   User     |       |    Post     |
++------------+       +-------------+
+| ID         |<----- | AuthorID    |
+| Nickname   |       | ID          |
+| Email      |       | Title       |
+| Password   |       | Content     |
+| CreatedAt  |       | CreatedAt   |
+| UpdatedAt  |       | UpdatedAt   |
++------------+       +-------------+
