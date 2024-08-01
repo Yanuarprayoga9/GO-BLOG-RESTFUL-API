@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"io/ioutil"
 	"net/http"
+	"time"
 
 	"github.com/Yanuarprayoga9/GO-BLOG-RESTFUL-API/api/auth"
 	"github.com/Yanuarprayoga9/GO-BLOG-RESTFUL-API/api/models"
@@ -37,7 +38,22 @@ func (server *Server) Login(w http.ResponseWriter, r *http.Request) {
 		responses.ERROR(w, http.StatusUnprocessableEntity, formattedError)
 		return
 	}
-	responses.JSON(w, http.StatusOK, token)
+	// Create a response user object without the password
+	responseUser := struct {
+		ID        uint32 `json:"id"`
+		Nickname  string `json:"nickname"`
+		Email     string `json:"email"`
+		CreatedAt time.Time `json:"created_at"`
+		UpdatedAt time.Time `json:"updated_at"`
+	}{
+		ID:        user.ID,
+		Nickname:  user.Nickname,
+		Email:     user.Email,
+		CreatedAt: user.CreatedAt,
+		UpdatedAt: user.UpdatedAt,
+	}
+
+	responses.JSON(w, http.StatusOK, map[string]interface{}{"token": token, "user": responseUser})
 }
 
 func (server *Server) SignIn(email, password string) (string, error) {
